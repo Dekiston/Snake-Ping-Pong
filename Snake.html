@@ -148,7 +148,7 @@
       if (cell.x === foodcut.x && cell.y === foodcut.y) {
             point -= 1;
             document.getElementById("score").innerHTML = point;
-            snake.maxCells -= 1;
+            snake.maxCells -= 2;
             snake.cells.pop();
             snake.cells.pop();
           
