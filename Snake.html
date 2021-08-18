@@ -165,8 +165,7 @@
             snake.maxCells = 4;
             snake.dx = grid;
             snake.dy = 0;
-
-            maxpoint = point;
+            if (maxpoint < point) { maxpoint = point; }
             point = 0;
             document.getElementById("maxscore").innerHTML = maxpoint;Z
             document.getElementById("score").innerHTML = point;
