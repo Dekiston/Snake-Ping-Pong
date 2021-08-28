@@ -45,6 +45,7 @@ let point = 0;
           foodtwoup.x = getRandomInt(0, 40) * grid;
           foodtwoup.y = getRandomInt(0, 40) * grid;
           break;
+          
 
         case 2:
           foodtwoup = {};
@@ -113,16 +114,19 @@ let point = 0;
             GetFood();
           
           }
-          
+
       if (cell.x === foodcut.x && cell.y === foodcut.y) {
             point -= 1;
             document.getElementById("score").innerHTML = point;
             snake.maxCells -= 2;
+            if (snake.maxCells < 1) {snake.maxCells = 1;}
             snake.cells.pop();
             snake.cells.pop();
             GetFood();
           
       }
+
+
 
       for (let i = index + 1; i < snake.cells.length; i++) {
           if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
@@ -134,7 +138,7 @@ let point = 0;
             snake.dy = 0;
             if (maxpoint < point) { maxpoint = point; }
             point = 0;
-            document.getElementById("maxscore").innerHTML = maxpoint;Z
+            document.getElementById("maxscore").innerHTML = maxpoint;
             document.getElementById("score").innerHTML = point;
 
           }
