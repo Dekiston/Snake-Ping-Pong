@@ -28,17 +28,40 @@ let point = 0;
         y: getRandomInt(0, 40) * grid
     };
     
-    let foodtwoup = {
-        x: getRandomInt(0, 40) * grid,
-        y: getRandomInt(0, 40) * grid
-    }
+    let foodtwoup = {};
 
-    let foodcut = {
-        x: getRandomInt(0, 40) * grid,
-        y: getRandomInt(0, 40) * grid
-    }
+    let foodcut = {};
 
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min)) + min; }
+
+    function GetFood () {
+      const x = getRandomInt (0, 10);
+      console.log (x);
+      switch (x) {
+        case 0:
+        case 1:
+          foodcut = {};
+          food = {};
+          foodtwoup.x = getRandomInt(0, 40) * grid;
+          foodtwoup.y = getRandomInt(0, 40) * grid;
+          break;
+
+        case 2:
+          foodtwoup = {};
+          food = {};
+          foodcut.x = getRandomInt(0, 40) * grid;
+          foodcut.y = getRandomInt(0, 40) * grid;
+          break;
+        
+        default:
+          foodtwoup = {};
+          foodcut = {};
+          food.x = getRandomInt(0, 40) * grid;
+          food.y = getRandomInt(0, 40) * grid;
+          break;
+      }
+    }
+    
    
     function loop() {
       requestAnimationFrame(loop);
@@ -79,32 +102,29 @@ let point = 0;
           point++;
           document.getElementById("score").innerHTML = point;
           snake.maxCells++;
+          GetFood();
         
-          food.x = getRandomInt(0, 40) * grid;
-          food.y = getRandomInt(0, 40) * grid;
         }
 
       if (cell.x === foodtwoup.x && cell.y === foodtwoup.y) {
             point += 3;
             document.getElementById("score").innerHTML = point;
             snake.maxCells += 3;
+            GetFood();
           
-            foodtwoup.x = getRandomInt(0, 40) * grid;
-            foodtwoup.y = getRandomInt(0, 40) * grid;
           }
+          
       if (cell.x === foodcut.x && cell.y === foodcut.y) {
             point -= 1;
             document.getElementById("score").innerHTML = point;
             snake.maxCells -= 2;
             snake.cells.pop();
             snake.cells.pop();
+            GetFood();
           
-            foodcut.x = getRandomInt(0, 40) * grid;
-            foodcut.y = getRandomInt(0, 40) * grid;
-          }
-    
-         
-      for (var i = index + 1; i < snake.cells.length; i++) {
+      }
+
+      for (let i = index + 1; i < snake.cells.length; i++) {
           if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
             snake.x = 160;
             snake.y = 160;
@@ -121,6 +141,8 @@ let point = 0;
         }
       });
     }
+
+    
     
     document.addEventListener('keydown', function (e) {
       if (e.which === 37 && snake.dx === 0) {
