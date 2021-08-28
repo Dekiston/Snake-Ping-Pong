@@ -1,0 +1,22 @@
+body {
+    height: 100%;
+      margin: 0;
+      background: black;
+    
+    
+  }
+
+  a {
+    font-family: Nfont;
+    color: rgb(255, 255, 255) !important;
+    text-decoration: none;
+  }
+
+  div {
+    font-family: Nfont;
+    font-size: 48px;
+    text-align: center;
+    font-family: serif;
+      color: white;
+    
+  }
