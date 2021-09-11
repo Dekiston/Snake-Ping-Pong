@@ -35,8 +35,8 @@ let point = 0;
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min)) + min; }
 
     function GetFood () {
-      const x = getRandomInt (0, 10);
-      console.log (x);
+      
+      const x = getRandomInt (0, 15);
       switch (x) {
         case 0:
         case 1:
@@ -62,11 +62,24 @@ let point = 0;
           break;
       }
     }
+
+    let speed = 4;
+    let limit = 5;
+    
+    function Speedlock () {
+      
+      if (point > limit) {
+        speed -= 0.25;
+        limit += 10;
+        console.log(speed);
+      }
+    }
     
    
     function loop() {
       requestAnimationFrame(loop);
-      if (++count < 4) { return; }
+      if (++count < speed) { return; }
+      
       
       count = 0;
      
@@ -103,6 +116,7 @@ let point = 0;
           point++;
           document.getElementById("score").innerHTML = point;
           snake.maxCells++;
+          Speedlock();
           GetFood();
         
         }
@@ -111,6 +125,7 @@ let point = 0;
             point += 3;
             document.getElementById("score").innerHTML = point;
             snake.maxCells += 3;
+            Speedlock();
             GetFood();
           
           }
@@ -122,6 +137,7 @@ let point = 0;
             if (snake.maxCells < 1) {snake.maxCells = 1;}
             snake.cells.pop();
             snake.cells.pop();
+            Speedlock();
             GetFood();
           
       }
@@ -143,6 +159,9 @@ let point = 0;
 
           }
         }
+      
+        
+      
       });
     }
 
