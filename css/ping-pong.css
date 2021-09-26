@@ -1,0 +1,21 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p {
+    color: aliceblue;
+    font-family: Nfont;
+    font-size: 20px;
+    position: absolute; 
+  }
+
+canvas {
+    border: 1px solid white;
+}
+
+.score {left: 45%; top: 90%;}
