@@ -1,4 +1,5 @@
-let point = 0;
+export default function snake () {
+    let point = 0;
     let maxpoint = 0;
     document.getElementById("score").innerHTML = point;
     document.getElementById("maxscore").innerHTML = maxpoint;
@@ -190,3 +191,5 @@ let point = 0;
     });
     
     requestAnimationFrame(loop);
+  }
+  snake();
